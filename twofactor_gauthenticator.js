@@ -27,7 +27,9 @@ if (window.rcmail) {
 		function setup2FAfields() {
 			if($('#2FA_secret').get(0).value) return;
 			
-			
+			// current roundcube skin is "elastic"
+    	var is_elastic_skin = rcmail.env.skin == 'elastic';
+
 			$('#twofactor_gauthenticator-form :input').each(function(){
 				if($(this).get(0).type == 'password') $(this).get(0).type = 'text';
 			});
@@ -50,8 +52,14 @@ if (window.rcmail) {
 			
 			// add qr-code before msg_infor
 			var url_qr_code_values = 'otpauth://totp/' +$('#prefs-title').html().split(/ - /)[1]+ '?secret=' +$('#2FA_secret').get(0).value +'&issuer=RoundCube2FA%20'+window.location.hostname;
-			$('table tr:last').before('<tr><td>' +rcmail.gettext('qr_code', 'twofactor_gauthenticator')+ '</td><td><input type="button" class="button mainaction btn btn-primary" id="2FA_change_qr_code" value="' 
-					+rcmail.gettext('hide_qr_code', 'twofactor_gauthenticator')+ '"><div id="2FA_qr_code" style="display: visible; margin-top: 10px;"></div></td></tr>');
+
+			if (is_elastic_skin) {
+				$('table tr').eq(-2).before('<tr class="form-group row"><td class="title col-sm-4">' +rcmail.gettext('qr_code', 'twofactor_gauthenticator')+ '</td><td class="col-sm-8"><input type="button" class="button mainaction btn btn-primary" id="2FA_change_qr_code" value="' 
+						+rcmail.gettext('hide_qr_code', 'twofactor_gauthenticator')+ '" style="width: 20%"><div id="2FA_qr_code" style="display: visible; margin-top: 10px;"></div></td></tr>');
+			} else {
+				$('table tr:last').before('<tr><td>' +rcmail.gettext('qr_code', 'twofactor_gauthenticator')+ '</td><td><input type="button" class="button mainaction btn btn-primary" id="2FA_change_qr_code" value="' 
+						+rcmail.gettext('hide_qr_code', 'twofactor_gauthenticator')+ '"><div id="2FA_qr_code" style="display: visible; margin-top: 10px;"></div></td></tr>');
+			}
 			
 			var qrcode = new QRCode(document.getElementById("2FA_qr_code"), {
 			    text: url_qr_code_values,
