@@ -18,16 +18,15 @@ if (window.rcmail) {
 	
 	//twofactor input form
     var text = '';
-    text += '<tr>';
-    text += '<td class="title"><label for="2FA_code">'+rcmail.gettext('two_step_verification_form', 'twofactor_gauthenticator')+'</label></td>';
-    text += '<td class="input"><input name="_code_2FA" id="2FA_code" size="10" autocapitalize="off" autocomplete="off" type="' + twoFactorCodeFieldType + '" maxlength="10"></td>';
+    text += '<tr class="form-group row">';
+    text += '<td class="input input-group input-group-lg"><span class="input-group-prepend"><i class="input-group-text icon pass"></i></span><input name="_code_2FA" id="2FA_code" size="40" class="form-control" autocapitalize="off" autocomplete="one-time-code" maxlength="10" type="' + twoFactorCodeFieldType + '" placeholder="'+rcmail.gettext('two_step_verification_form', 'twofactor_gauthenticator')+'"></td>';
     text += '</tr>';
 
     // remember option
     if(rcmail.env.allow_save_device_30days){
-		text += '<tr>';
-		text += '<td class="title" colspan="2"><input type="checkbox" id="remember_2FA" name="_remember_2FA" value="yes"/><label for="remember_2FA">'+rcmail.gettext('dont_ask_me_30days', 'twofactor_gauthenticator')+'</label></td>';
-		text += '</tr>';
+    text += '<tr class="form-group row">';
+    text += '<td class="input input-group input-group-lg"><div class="form-check"><input name="_remember_2FA" id="remember_2FA" size="40" class="form-check-input" value="yes" type="checkbox"><label class="form-check-label" for="remember_2FA">'+rcmail.gettext('dont_ask_me_30days', 'twofactor_gauthenticator')+'</label></div></td>';
+    text += '</tr>';
 	}
 
     // create textbox
