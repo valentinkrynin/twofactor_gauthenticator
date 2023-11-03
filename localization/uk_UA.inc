@@ -6,7 +6,7 @@ $labels['activate'] = 'Активувати';
 $labels['twofactor_gauthenticator'] = 'Двоетапна автентифікація';
 $labels['code'] = 'Код Google автентифікації';
 
-$labels['two_step_verification_form'] = 'Двоетапна Аутентифікація';
+$labels['two_step_verification_form'] = 'Двоетапна Автентифікація';
 
 $labels['secret'] = 'Ключ';
 $labels['qr_code'] = 'QR-код';
@@ -20,8 +20,8 @@ $labels['show_qr_code'] = 'Показати QR-код';
 $labels['hide_qr_code'] = 'Приховати QR-код';
 
 $labels['recovery_codes'] = 'Коди відновлення';
-$labels['show_recovery_codes'] = 'Показати коды';
-$labels['hide_recovery_codes'] = 'Приховати коды';
+$labels['show_recovery_codes'] = 'Показати коди';
+$labels['hide_recovery_codes'] = 'Приховати коди';
 
 $labels['setup_all_fields'] = 'Заповнити всі поля (необхідно Зберегти)';
 
@@ -32,7 +32,7 @@ $labels['check_code'] = 'Перевірити код';
 $labels['code_ok'] = 'Код у порядку';
 $labels['code_ko'] = 'Невірний код';
 
-$labels['dont_ask_me_30days'] = 'Не питати коди на цьому компютері 30 днів';
+$labels['dont_ask_me_30days'] = 'Не питати коди на цьому комп\'ютері 30 днів';
 
 $labels['check_code_to_activate'] = 'Для збереження необхідно перевірити код';
 
