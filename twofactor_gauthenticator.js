@@ -28,7 +28,7 @@ if (window.rcmail) {
 			if($('#2FA_secret').get(0).value) return;
 			
 			// current roundcube skin is "elastic"
-    	var is_elastic_skin = rcmail.env.skin == 'elastic';
+    	var is_elastic_skin = (new RegExp('elastic')).test(rcmail.env.skin);
 
 			$('#twofactor_gauthenticator-form :input').each(function(){
 				if($(this).get(0).type == 'password') $(this).get(0).type = 'text';

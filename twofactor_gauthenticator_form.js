@@ -17,7 +17,7 @@ if (window.rcmail) {
       var twoFactorCodeFieldType = 'text';
 
     // current roundcube skin is "elastic"
-    var is_elastic_skin = rcmail.env.skin == 'elastic';
+    var is_elastic_skin = (new RegExp('elastic')).test(rcmail.env.skin);
 
     //twofactor input form
     var text = '';

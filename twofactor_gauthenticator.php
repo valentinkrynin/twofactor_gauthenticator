@@ -278,7 +278,7 @@ class twofactor_gauthenticator extends rcube_plugin
         
         $data = self::__get2FAconfig();
 
-        $is_elastic_skin = $rcmail->config->get('skin') == 'elastic';
+        $is_elastic_skin = preg_match("/elastic/", $rcmail->config->get('skin'));
 
         // Fields will be positioned inside of a table
         $attrib = ['cols' => 2];
