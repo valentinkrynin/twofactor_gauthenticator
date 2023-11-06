@@ -351,7 +351,7 @@ class twofactor_gauthenticator extends rcube_plugin
         // qr-code
         if($data['secret']) {
 			$table->add('title', $this->gettext('qr_code'));
-        	$table->add(null, '<input type="button" class="button mainaction" id="2FA_change_qr_code" value="'.$this->gettext('show_qr_code').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'> 
+        	$table->add(null, '<div class="d-xl-inline-block col-sm-12 col-xl-4 pr-xl-2"><input type="button" class="button mainaction btn-block" id="2FA_change_qr_code" value="'.$this->gettext('show_qr_code').'"></div> 
         						<div id="2FA_qr_code" style="display: none; margin-top: 10px;"></div>');
 
         	// new JS qr-code, without call to Google
