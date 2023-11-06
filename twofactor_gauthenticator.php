@@ -369,7 +369,7 @@ class twofactor_gauthenticator extends rcube_plugin
         // button to setup all fields if doesn't exists secret
         $html_setup_all_fields = '';
         if(!$data['secret']) {
-        	$html_setup_all_fields = '<input type="button" class="button mainaction" id="2FA_setup_fields" value="'.$this->gettext('setup_all_fields').'" '.($is_elastic_skin ? 'style="margin-left: 3px;"' : '').'>';
+        	$html_setup_all_fields = '<input type="button" class="button mainaction ml-sm-2" id="2FA_setup_fields" value="'.$this->gettext('setup_all_fields').'" '.($is_elastic_skin ? 'style="margin-left: 3px;"' : '').'>';
         }
         
         // check OTP code
@@ -401,7 +401,7 @@ class twofactor_gauthenticator extends rcube_plugin
 	                $rcmail->output->button(array(
 		                'command' => 'plugin.twofactor_gauthenticator-save',
 		                'type' => 'input',
-		                'class' => 'button mainaction',
+		                'class' => 'button mainaction mb-2 mb-sm-0',
 		                'label' => 'save'
 		            ))
                 
