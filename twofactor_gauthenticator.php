@@ -323,7 +323,7 @@ class twofactor_gauthenticator extends rcube_plugin
         $field_id = '2FA_show_recovery_codes';
        	$table->add('title', html::label($field_id, rcube::Q($this->gettext('recovery_codes'))));
         	
-       	$html_recovery_codes = '<div class="d-sm-inline-block col-sm-12 col-xl-4 mb-2 mb-xl-0"><input type="button" class="button mainaction" id="'.$field_id.'" '.($data['secret'] ? '' : 'disabled="disabled"').' value="'.$this->gettext('show_recovery_codes').'"></div>';
+       	$html_recovery_codes = '<div class="d-sm-inline-block col-sm-12 col-xl-4 mb-2 mb-xl-0 pr-xl-2"><input type="button" class="button mainaction btn-block" id="'.$field_id.'" '.($data['secret'] ? '' : 'disabled="disabled"').' value="'.$this->gettext('show_recovery_codes').'"></div>';
        	$i=0;
        	for($i = 0; $i < $this->_number_recovery_codes; $i++)
        	{
@@ -377,7 +377,7 @@ class twofactor_gauthenticator extends rcube_plugin
 			$table->add('title', html::label('2FA_code_to_check', rcube::Q($this->gettext('check_code'))));
 	        // elastic ui.js adds "datetime" class to a cell (if there is only 2 entire inputs), we don't need that
 	        $html_check_code = '<input type="button" class="hidden" disabled="disabled">';
-			$html_check_code .= "<div class=\"d-md-inline-block col-sm-12 col-md-4 mb-2 mb-md-0 pr-md-2\">".((new html_inputfield(array('id' => '2FA_check_code', 'type' => 'button', 'value' => $this->gettext('check_code'), 'class' => 'button mainaction')))->show())."</div>";
+			$html_check_code .= "<div class=\"d-md-inline-block col-sm-12 col-md-4 mb-2 mb-md-0 pr-md-2\">".((new html_inputfield(array('id' => '2FA_check_code', 'type' => 'button', 'value' => $this->gettext('check_code'), 'class' => 'button mainaction btn-block')))->show())."</div>";
 			$html_check_code .= "<div class=\"d-md-inline-block col-sm-12 col-md-8\">".((new html_inputfield(array('id' => '2FA_code_to_check', 'type' => 'text', 'maxlength' => 10)))->show())."</div>";
 			$table->add(null, $html_check_code);
 			$html_check_code = "";
