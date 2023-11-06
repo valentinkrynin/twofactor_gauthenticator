@@ -309,7 +309,7 @@ class twofactor_gauthenticator extends rcube_plugin
         $html_secret = $is_elastic_skin ? '<input type="button" class="hidden" disabled="disabled">' : '';
         if($data['secret'])
         {
-        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_change_secret" value="'.$this->gettext('show_secret').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'>';
+        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_change_secret" value="'.$this->gettext('show_secret').'">';
         }
         else
         {
