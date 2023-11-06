@@ -437,9 +437,6 @@ class twofactor_gauthenticator extends rcube_plugin
     	//$secret = rcube_utils::get_input_value('secret', rcube_utils::INPUT_GET);
     	$secret = rcube_utils::get_input_value('secret', rcube_utils::INPUT_GET);
 
-    	error_log($code);
-    	error_log($secret);
-
     	if(self::__checkCode($code, $secret))
     	{
     		echo $this->gettext('code_ok');
