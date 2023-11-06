@@ -299,7 +299,7 @@ class twofactor_gauthenticator extends rcube_plugin
         // secret
         $field_id = '2FA_secret';
         if ($is_elastic_skin) {
-        	$input_descsecret = new html_inputfield(array('name' => $field_id, 'id' => $field_id, 'size' => 60, 'type' => 'password', 'value' => $data['secret'], 'autocomplete' => 'new-password', 'class' => 'd-md-inline-block col-md-8 col-xl-10'));
+        	$input_descsecret = new html_inputfield(array('name' => $field_id, 'id' => $field_id, 'size' => 60, 'type' => 'password', 'value' => $data['secret'], 'autocomplete' => 'new-password', 'class' => 'd-md-inline-block col-md-9 col-lg-10'));
         } else {
         	$input_descsecret = new html_inputfield(array('name' => $field_id, 'id' => $field_id, 'size' => 60, 'type' => 'password', 'value' => $data['secret'], 'autocomplete' => 'new-password'));
         }
@@ -309,11 +309,11 @@ class twofactor_gauthenticator extends rcube_plugin
         $html_secret = $is_elastic_skin ? '<input type="button" class="hidden" disabled="disabled">' : '';
         if($data['secret'])
         {
-        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_change_secret" value="'.$this->gettext('show_secret').'">';
+        	$html_secret .= '<input type="button" class="button mainaction col-md-3 col-lg-2" id="2FA_change_secret" value="'.$this->gettext('show_secret').'">';
         }
         else
         {
-        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'">';
+        	$html_secret .= '<input type="button" class="button mainaction col-md-3 col-lg-2" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'">';
         }
         $html_secret .= $input_descsecret->show();
         $table->add(null, $html_secret);
@@ -323,13 +323,13 @@ class twofactor_gauthenticator extends rcube_plugin
         $field_id = '2FA_show_recovery_codes';
        	$table->add('title', html::label($field_id, rcube::Q($this->gettext('recovery_codes'))));
         	
-       	$html_recovery_codes = '<input type="button" class="button mainaction" id="'.$field_id.'" '.($data['secret'] ? '' : 'disabled="disabled"').' value="'.$this->gettext('show_recovery_codes').'" '.($is_elastic_skin ? 'style="min-width: 20%;"' : '').'>';
+       	$html_recovery_codes = '<input type="button" class="button mainaction col-md-3 col-lg-2" id="'.$field_id.'" '.($data['secret'] ? '' : 'disabled="disabled"').' value="'.$this->gettext('show_recovery_codes').'">';
        	$i=0;
        	for($i = 0; $i < $this->_number_recovery_codes; $i++)
        	{
        		$value = isset($data['recovery_codes'][$i]) ? $data['recovery_codes'][$i] : '';
        		if ($is_elastic_skin) {
-       			$html_recovery_codes .=  (new html_inputfield(array('name' => "2FA_recovery_codes[]", 'size' => 60, 'type' => 'password', 'value' => $value, 'maxlength' => 10, 'style' => 'width: calc(20% - 3px); margin-left: 3px', 'class' => 'd-sm-inline-block')))->show();
+       			$html_recovery_codes .=  (new html_inputfield(array('name' => "2FA_recovery_codes[]", 'size' => 60, 'type' => 'password', 'value' => $value, 'maxlength' => 10, 'class' => 'd-md-inline-block col-md-4 col-lg-2 mr-md-2')))->show();
        		} else {
        			$html_recovery_codes .= ' <input type="password" name="2FA_recovery_codes[]" value="'.$value.'" maxlength="10"> &nbsp; ';
        		}
