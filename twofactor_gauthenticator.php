@@ -309,11 +309,11 @@ class twofactor_gauthenticator extends rcube_plugin
         $html_secret = $is_elastic_skin ? '<input type="button" class="hidden" disabled="disabled">' : '';
         if($data['secret'])
         {
-        	$html_secret .= '<div class="d-md-inline-block col-sm-12 col-md-4 mb-2 mb-md-0 pr-md-2"><input type="button" class="button mainaction" id="2FA_change_secret" value="'.$this->gettext('show_secret').'"></div>';
+        	$html_secret .= '<div class="d-md-inline-block col-sm-12 col-md-4 mb-2 mb-md-0 pr-md-2"><input type="button" class="button mainaction btn-block" id="2FA_change_secret" value="'.$this->gettext('show_secret').'"></div>';
         }
         else
         {
-        	$html_secret .= '<div class="d-md-inline-block col-sm-12 col-md-4 mb-2 mb-md-0 pr-md-2"><input type="button" class="button mainaction" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'"></div>';
+        	$html_secret .= '<div class="d-md-inline-block col-sm-12 col-md-4 mb-2 mb-md-0 pr-md-2"><input type="button" class="button mainaction btn-block" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'"></div>';
         }
         $html_secret .= $input_descsecret;
         $table->add(null, $html_secret);
@@ -323,7 +323,7 @@ class twofactor_gauthenticator extends rcube_plugin
         $field_id = '2FA_show_recovery_codes';
        	$table->add('title', html::label($field_id, rcube::Q($this->gettext('recovery_codes'))));
         	
-       	$html_recovery_codes = '<input type="button" class="button mainaction '.($is_elastic_skin ? 'col-xl-4 mb-2 mb-xl-0' : '').'" id="'.$field_id.'" '.($data['secret'] ? '' : 'disabled="disabled"').' value="'.$this->gettext('show_recovery_codes').'">';
+       	$html_recovery_codes = '<div class="d-sm-inline-block col-sm-12 col-xl-4 mb-2 mb-xl-0"><input type="button" class="button mainaction" id="'.$field_id.'" '.($data['secret'] ? '' : 'disabled="disabled"').' value="'.$this->gettext('show_recovery_codes').'"></div>';
        	$i=0;
        	for($i = 0; $i < $this->_number_recovery_codes; $i++)
        	{
@@ -339,7 +339,7 @@ class twofactor_gauthenticator extends rcube_plugin
        				$additional_class = "pr-sm-0";
        			}
        			
-       			$html_recovery_codes .=  "<div class=\"d-sm-inline-block col-sm-6 col-md-3 col-xl-2 mb-2 mb-xl-0 {$additional_class}\">".((new html_inputfield(array('name' => "2FA_recovery_codes[]", 'size' => 60, 'type' => 'password', 'value' => $value, 'maxlength' => 10, 'class' => 'd-sm-inline-block col-sm-5 col-xl-2 mr-sm-2 mb-2 mb-xl-0')))->show())."</div>";
+       			$html_recovery_codes .=  "<div class=\"d-sm-inline-block col-sm-6 col-md-3 col-xl-2 mb-2 mb-md-0 {$additional_class}\">".((new html_inputfield(array('name' => "2FA_recovery_codes[]", 'size' => 60, 'type' => 'password', 'value' => $value, 'maxlength' => 10)))->show())."</div>";
        		} else {
        			$html_recovery_codes .= ' <input type="password" name="2FA_recovery_codes[]" value="'.$value.'" maxlength="10"> &nbsp; ';
        		}
