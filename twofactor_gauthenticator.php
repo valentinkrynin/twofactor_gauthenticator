@@ -299,7 +299,7 @@ class twofactor_gauthenticator extends rcube_plugin
         // secret
         $field_id = '2FA_secret';
         if ($is_elastic_skin) {
-        	$input_descsecret = new html_inputfield(array('name' => $field_id, 'id' => $field_id, 'size' => 60, 'type' => 'password', 'value' => $data['secret'], 'autocomplete' => 'new-password', 'style' => 'width: calc(80% - 3px); margin-left: 3px', 'class' => 'd-sm-inline-block'));
+        	$input_descsecret = new html_inputfield(array('name' => $field_id, 'id' => $field_id, 'size' => 60, 'type' => 'password', 'value' => $data['secret'], 'autocomplete' => 'new-password', 'class' => 'd-md-inline-block col-md-8 col-xl-10'));
         } else {
         	$input_descsecret = new html_inputfield(array('name' => $field_id, 'id' => $field_id, 'size' => 60, 'type' => 'password', 'value' => $data['secret'], 'autocomplete' => 'new-password'));
         }
@@ -309,11 +309,11 @@ class twofactor_gauthenticator extends rcube_plugin
         $html_secret = $is_elastic_skin ? '<input type="button" class="hidden" disabled="disabled">' : '';
         if($data['secret'])
         {
-        	$html_secret .= '<input type="button" class="button mainaction" id="2FA_change_secret" value="'.$this->gettext('show_secret').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'>';
+        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_change_secret" value="'.$this->gettext('show_secret').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'>';
         }
         else
         {
-        	$html_secret .= '<input type="button" class="button mainaction" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'>';
+        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'>';
         }
         $html_secret .= $input_descsecret->show();
         $table->add(null, $html_secret);
