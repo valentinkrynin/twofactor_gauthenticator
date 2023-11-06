@@ -313,7 +313,7 @@ class twofactor_gauthenticator extends rcube_plugin
         }
         else
         {
-        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'" '.($is_elastic_skin ? 'style="width: 20%;"' : '').'>';
+        	$html_secret .= '<input type="button" class="button mainaction col-md-4 col-xl-2" id="2FA_create_secret" disabled="disabled" value="'.$this->gettext('create_secret').'">';
         }
         $html_secret .= $input_descsecret->show();
         $table->add(null, $html_secret);
