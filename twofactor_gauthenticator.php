@@ -20,7 +20,7 @@ class twofactor_gauthenticator extends rcube_plugin
 	private $_number_recovery_codes = 4;
 
         // relative to $config['log_dir']
-        private $_logs_file = 'log_errors_2FA.txt';
+        private $_logs_file = 'errors_2FA.log';
 	
     function init() 
     {
@@ -172,7 +172,7 @@ class twofactor_gauthenticator extends rcube_plugin
 				}
 			}
 			// we're into some task but marked with login...
-			elseif($rcmail->task !== 'login' && ! $_SESSION['twofactor_gauthenticator_2FA_login'] >= $_SESSION['twofactor_gauthenticator_login'])
+			elseif($rcmail->task !== 'login' && !(($_SESSION['twofactor_gauthenticator_2FA_login'] ?? 0) >= $_SESSION['twofactor_gauthenticator_login']))
 			{
 				$this->__exitSession();
 			}
@@ -558,10 +558,18 @@ class twofactor_gauthenticator extends rcube_plugin
 	// END remember
 
 
-        // log error into $_logs_file directory
-        private function __logError() {
+	// log error into $_logs_file directory
+	private function __logError() {
+		$rcmail = rcmail::get_instance();
 		$_log_dir = $rcmail->config->get('log_dir');
-                file_put_contents($_log_dir.'/'.$this->_logs_file, date("Y-m-d H:i:s")."|".$_SERVER['HTTP_X_FORWARDED_FOR']."|".$_SERVER['REMOTE_ADDR']."\n", FILE_APPEND);
-        }
+		$_log_data = [
+			"[" . date('d-M-Y H:i:s O') . "]",
+			"User " . $_SESSION['username'] ?? "",
+			"[" . ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? "") . "]",
+			"[" . $_SERVER['REMOTE_ADDR'] . "]",
+			"\n"
+		];
+		file_put_contents($_log_dir.'/'.$this->_logs_file, implode(" ", $_log_data), FILE_APPEND);
+	}
 
 }
